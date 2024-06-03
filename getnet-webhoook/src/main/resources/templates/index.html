@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-Br" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{components :: general-head}"></div>
+
+<body id="chama">
+	<div th:replace="~{components :: header-fragment}"></div>
+	
+	<h1 class="display-2 fs-1">Bem vindo! Esta é a API WebHook para conciliação de clientes TaxContabilidade</h1>
+	
+	<div th:insert="~{main-menus :: main-menus}"></div>
+	
+	<div th:insert="~{components :: scripts}"></div>
+</body>
+
+</html>
