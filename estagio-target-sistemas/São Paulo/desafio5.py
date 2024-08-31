@@ -1,4 +1,3 @@
-import sys
 from utils import clear_screen
 
 """
@@ -32,4 +31,4 @@ if __name__ == "__main__":
             continue
         except KeyboardInterrupt:
             clear_screen()
-            sys.exit(1)
+            exit(1)
