@@ -19,10 +19,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          path: jobmail/app # Faz o checkout do repositório no diretório jobmail
 
-      - name: Run docker container
+      - name: Navigate to jobmail and run docker compose
         run: |
-          cd jobmail  # Navega até o diretório jobmail
+          cd ./jobmail  # Navega até o diretório 'jobmail'
           docker compose up --build
