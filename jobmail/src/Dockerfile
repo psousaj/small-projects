@@ -29,10 +29,10 @@ WORKDIR /usr/src/app
 
 # Copia os arquivos necessários para o contêiner
 COPY pyproject.toml .
-COPY app .
+COPY . .
 
 # Instala as dependências do projeto usando o Poetry
 RUN poetry install --no-root
 
 # Define o comando padrão para iniciar a aplicação
-CMD ["poetry", "run", "python", "app.py"]
+CMD ["poetry", "run", "python", "src/app.py"]
