@@ -2,15 +2,13 @@ services:
   jobmail:
     restart: unless-stopped
     build:
-      context: . # Contexto de construção, geralmente o diretório onde o docker-compose.yml está
-      dockerfile: src/Dockerfile # Caminho para o Dockerfile relativo ao contexto
-    # volumes:
-    #   - ./app:/usr/src/app
+      context: ./src # Mude para o caminho correto
+      dockerfile: Dockerfile # O Dockerfile está na pasta src
     environment:
       - MAILGUN_DOMAIN=${MAILGUN_DOMAIN}
       - MAILGUN_API_KEY=${MAILGUN_API_KEY}
       - POETRY_HOME=/usr/src/poetry
-    command: poetry run python3 src/app.py # Comando para rodar a aplicação
+    command: poetry run python app.py # Altere para o comando correto
   db:
     image: postgres:latest
     restart: unless-stopped

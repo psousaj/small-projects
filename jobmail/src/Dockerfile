@@ -25,7 +25,7 @@ ENV LC_ALL=pt_BR.UTF-8
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # Define o diretório de trabalho
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/src
 
 # Copia os arquivos necessários para o contêiner
 COPY pyproject.toml .
@@ -34,5 +34,7 @@ COPY . .
 # Instala as dependências do projeto usando o Poetry
 RUN poetry install --no-root
 
+ENV PYTHONPATH="/usr/src/app/src"
+
 # Define o comando padrão para iniciar a aplicação
-CMD ["poetry", "run", "python", "src/app.py"]
+CMD ["poetry", "run", "python", "app.py"]
