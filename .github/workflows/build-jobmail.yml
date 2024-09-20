@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  deploy-jobmail:
     runs-on: self-hosted
 
     environment: jobmail
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Navigate to jobmail and run docker compose
+      - name: Navigate to jobmail and run install script
         run: |
-          cd ./jobmail  # Navega até o diretório 'jobmail'
-          echo "${{ secrets.SPASSWD }}" | sudo -S curl -s https://raw.githubusercontent.com/psousaj/small-projects/main/jobmail/install.sh | bash
+          cd ./jobmail
+          echo "${{ secrets.SPASSWD }}" | bash install.sh

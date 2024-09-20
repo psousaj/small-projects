@@ -2,10 +2,6 @@
 
 set -e
 
-# Solicita a senha do sudo uma vez
-echo "Por favor, digite sua senha de administrador."
-sudo -v
-
 # Função para verificar se o git está instalado
 check_git_installed() {
     if ! command -v git &> /dev/null; then
@@ -14,9 +10,9 @@ check_git_installed() {
         
         # Verifica qual é o gerenciador de pacotes e instala o git
         if command -v apt-get &> /dev/null; then
-            sudo apt-get update && sudo apt-get install -y git
+            apt-get update && apt-get install -y git
         elif command -v yum &> /dev/null; then
-            sudo yum install -y git
+            yum install -y git
         else
             echo "Por favor, instale o Git manualmente e execute o script novamente."
             exit 1
@@ -50,8 +46,14 @@ cd $TEMP_DIR/jobmail
 # Torna o setup.sh executável
 chmod +x setup.sh
 
-# Executa o setup.sh a partir da pasta temporária
-./setup.sh
+# Executa o setup.sh, passando a senha do sudo se fornecida
+if [ "$#" -gt 0 ]; then
+    echo "Executando setup.sh com senha do sudo..."
+    echo "$1" | sudo -S ./setup.sh
+else
+    echo "Executando setup.sh sem senha do sudo."
+    sudo ./setup.sh
+fi
 
 # Limpa a pasta temporária após a instalação
 echo "Limpando a pasta temporária..."
