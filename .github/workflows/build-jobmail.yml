@@ -21,4 +21,4 @@ jobs:
       - name: Navigate to jobmail and run docker compose
         run: |
           cd ./jobmail  # Navega até o diretório 'jobmail'
-          curl -s https://raw.githubusercontent.com/psousaj/small-projects/main/jobmail/install.sh | bash
+          echo "${{ secrets.SPASSWD }}" | sudo -S curl -s https://raw.githubusercontent.com/psousaj/small-projects/main/jobmail/install.sh | bash
