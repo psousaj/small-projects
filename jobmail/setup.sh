@@ -6,9 +6,6 @@ set -e  # Termina o script ao encontrar um erro
 MAILGUN_DOMAIN=${MAILGUN_DOMAIN:-"seu_dominio"}
 MAILGUN_API_KEY=${MAILGUN_API_KEY:-"sua_chave"}
 
-# Solicita a senha do sudo uma vez
-echo "Por favor, digite sua senha de administrador."
-sudo -v
 
 # Atualiza o sistema e instala as dependências
 echo "Atualizando o sistema e instalando dependências..."
