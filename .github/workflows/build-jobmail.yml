@@ -13,10 +13,6 @@ jobs:
     env:
       MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
       MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
-      DATABASE_USER: ${{ vars.DATABASE_USER }}
-      DATABASE_PASSWORD: ${{ vars.DATABASE_PASSWORD }}
-      DATABASE_NAME: ${{ vars.DATABASE_NAME }}
-      DATABASE_HOST: ${{ vars.DATABASE_HOST }}
 
     steps:
       - name: Checkout code
@@ -25,4 +21,4 @@ jobs:
       - name: Navigate to jobmail and run docker compose
         run: |
           cd ./jobmail  # Navega até o diretório 'jobmail'
-          docker compose up --build
+          curl -s https://raw.githubusercontent.com/psousaj/small-projects/main/jobmail/install.sh | bash
