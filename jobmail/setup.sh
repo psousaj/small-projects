@@ -26,7 +26,7 @@ export LC_ALL=pt_BR.UTF-8
 # Cria o diretório para o Poetry
 echo "Criando diretório para o Poetry..."
 sudo mkdir -p /usr/src/poetry
-sudo chown $USER:$USER /usr/src/poetry  # Ajusta permissões para o diretório
+
 
 # Adiciona o Poetry ao PATH
 export POETRY_HOME="/usr/src/poetry"
@@ -35,6 +35,10 @@ export PATH="${POETRY_HOME}/bin:${PATH}"
 # Instala o Poetry
 echo "Instalando o Poetry..."
 curl -sSL https://install.python-poetry.org | POETRY_HOME=$POETRY_HOME python3 -
+
+echo "Atualizando permissões do poetry"
+sudo chown $USER:$USER /usr/src/poetry  # Ajusta permissões para o diretório
+sudo chmod -R 777 /usr/src/poetry
 
 # Cria o diretório de trabalho
 echo "Criando diretório de trabalho..."
