@@ -55,7 +55,7 @@ if [ "$#" -gt 0 ]; then
     echo "$1" | sudo -S ./setup.sh
 else
     echo "Executando setup.sh com solicitação de senha do sudo."
-    sudo ./setup.sh 
+    /usr/bin/sudo ./setup.sh 
 fi
 echo "Configurando o serviço..." \
 setup_service.sh
