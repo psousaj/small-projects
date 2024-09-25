@@ -39,21 +39,27 @@ if [ ! -d "$TEMP_DIR/jobmail" ]; then
     exit 1
 fi
 
-# Move para o diretório temporário onde está o 'jobmail'
+echo "Setando workdir"
+WORKDIR=$TEMP_DIR/jobmail
+
 echo "Movendo para a pasta temporária e executando setup.sh..."
-cd $TEMP_DIR/jobmail
+cd $WORKDIR
 
 # Torna o setup.sh executável
-chmod +x setup.sh
+chmod +x $WORKDIR/infra/setup.sh
+chmod +x $WORKDIR/infra/setup_service.sh
 
-# Executa o setup.sh, passando a senha do sudo se fornecida
+# Executa o setup.sh, pedindo senha do sudo se necessário
 if [ "$#" -gt 0 ]; then
     echo "Executando setup.sh com senha do sudo..."
     echo "$1" | sudo -S ./setup.sh
 else
-    echo "Executando setup.sh sem senha do sudo."
-    sudo ./setup.sh
+    echo "Executando setup.sh com solicitação de senha do sudo."
+    sudo ./setup.sh 
 fi
+echo "Configurando o serviço..." \
+setup_service.sh
+
 
 # Limpa a pasta temporária após a instalação
 echo "Limpando a pasta temporária..."
