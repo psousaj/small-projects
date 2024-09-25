@@ -65,4 +65,5 @@ setup_service.sh
 echo "Limpando a pasta temporária..."
 rm -rf $TEMP_DIR
 
-echo "Instalação concluída!"
+echo "Instalação concluída! O serviço está rodando."
+
